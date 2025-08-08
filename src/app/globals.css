@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -33,34 +33,85 @@ body {
 
 /* Animations */
 @keyframes floatY {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 @keyframes popIn {
-  0% { transform: scale(0.7); opacity: 0; }
-  60% { transform: scale(1.08); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 @keyframes swingSlow {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(1.5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 @keyframes fireworkBurst {
-  0% { transform: scale(0.4); opacity: 0; }
-  40% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.2); opacity: 0; }
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
 }
 @keyframes bombFall {
-  0% { transform: translateY(-120%); opacity: 0; }
-  20% { opacity: 1; }
-  80% { transform: translateY(80vh) rotate(8deg); }
-  100% { transform: translateY(95vh) rotate(0deg); opacity: 0; }
+  0% {
+    transform: translateY(-120%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(80vh) rotate(8deg);
+  }
+  100% {
+    transform: translateY(95vh) rotate(0deg);
+    opacity: 0;
+  }
 }
 
-.animate-float { animation: floatY 3s ease-in-out infinite; }
-.animate-pop { animation: popIn 500ms ease-out both; }
-.animate-swing-slow { animation: swingSlow 4s ease-in-out infinite; transform-origin: 140px 40px; }
-.animate-firework { animation: fireworkBurst 900ms ease-out forwards; }
-.animate-bomb { animation: bombFall 1400ms cubic-bezier(0.2,0.8,0.2,1) forwards; }
+.animate-float {
+  animation: floatY 3s ease-in-out infinite;
+}
+.animate-pop {
+  animation: popIn 500ms ease-out both;
+}
+.animate-swing-slow {
+  animation: swingSlow 4s ease-in-out infinite;
+  transform-origin: 140px 40px;
+}
+.animate-firework {
+  animation: fireworkBurst 900ms ease-out forwards;
+}
+.animate-bomb {
+  animation: bombFall 1400ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}

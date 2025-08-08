@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 1) Fix staged files
+npx lint-staged
+
+# 2) Ensure formatting is clean and lint passes on the repo
+npm run format:check
+npm run lint
