@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HangmanFigure from "@/components/HangmanFigure";
 import Keyboard from "@/components/Keyboard";
 import { THEMES, THEMES_PT, getRandomWord, getRandomWordPt } from "@/data/words";
@@ -19,7 +19,35 @@ export default function Home() {
   const [secret, setSecret] = useState<string>("");
   const [guesses, setGuesses] = useState<Set<string>>(new Set());
   const [status, setStatus] = useState<"playing" | "won" | "lost">("playing");
+  const [wins, setWins] = useState<number>(0);
+  const [losses, setLosses] = useState<number>(0);
+  const [countdown, setCountdown] = useState<number | null>(null);
+  const intervalRef = useRef<number | null>(null);
+  const timeoutRef = useRef<number | null>(null);
   const maxWrong = 6;
+
+  // Load persisted scores on first render
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("hangman_score");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (typeof parsed?.wins === "number") setWins(parsed.wins);
+        if (typeof parsed?.losses === "number") setLosses(parsed.losses);
+      }
+    } catch (_) {
+      // ignore parsing/storage errors
+    }
+  }, []);
+
+  // Persist scores whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem("hangman_score", JSON.stringify({ wins, losses }));
+    } catch (_) {
+      // ignore storage errors
+    }
+  }, [wins, losses]);
 
   // Pick a random theme when language changes or on first load
   useEffect(() => {
@@ -65,6 +93,57 @@ export default function Home() {
       setStatus("lost");
     }
   }, [guesses, secret, status, wrongGuesses]);
+
+  // Track wins and losses when status changes
+  useEffect(() => {
+    // Increment only on transition into a terminal state
+    if (status === "won") {
+      setWins((w) => w + 1);
+    } else if (status === "lost") {
+      setLosses((l) => l + 1);
+    }
+    // We reset status back to 'playing' on new word, so repeated increments won't happen
+    // because this effect will only run when status becomes 'won' or 'lost'.
+  }, [status]);
+
+  // Auto start a new game after 5 seconds on win/loss with random theme
+  useEffect(() => {
+    // cleanup helper
+    const clearTimers = () => {
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      if (timeoutRef.current !== null) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
+
+    if (status === "won" || status === "lost") {
+      setCountdown(5);
+      intervalRef.current = window.setInterval(() => {
+        setCountdown((c) => (c !== null ? Math.max(0, c - 1) : null));
+      }, 1000);
+      timeoutRef.current = window.setTimeout(() => {
+        const themes = lang === "pt" ? Object.keys(THEMES_PT) : Object.keys(THEMES);
+        if (themes.length > 0) {
+          const rand = themes[Math.floor(Math.random() * themes.length)] as keyof typeof THEMES | keyof typeof THEMES_PT;
+          setTheme(rand);
+        }
+        setCountdown(null);
+        clearTimers();
+      }, 5000);
+    } else {
+      // if back to playing or initial, clear any pending timers
+      setCountdown(null);
+      clearTimers();
+    }
+
+    return () => {
+      clearTimers();
+    };
+  }, [status, lang]);
 
   function onGuess(letter: string) {
     if (status !== "playing" || !letter || guesses.has(letter)) return;
@@ -138,6 +217,10 @@ export default function Home() {
                 <div className="text-xs sm:text-sm opacity-70">
                   {STRINGS[lang].wrongLabel}: {wrongGuesses}/{maxWrong}
                 </div>
+                <div className="flex gap-3 text-xs sm:text-sm opacity-80">
+                  <span>{STRINGS[lang].winsLabel}: {wins}</span>
+                  <span>{STRINGS[lang].lossesLabel}: {losses}</span>
+                </div>
                 {status !== "playing" && (
                   <div
                     className={`px-3 py-2 rounded font-semibold text-center ${
@@ -148,6 +231,11 @@ export default function Home() {
                     aria-live="polite"
                   >
                     {status === "won" ? STRINGS[lang].youWon : `${STRINGS[lang].youLost} ${secret}`}
+                    {countdown !== null && (
+                      <div className="mt-1 text-xs opacity-95">
+                        {STRINGS[lang].autoNewGameIn}: {countdown}s
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
