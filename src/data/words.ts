@@ -13,6 +13,10 @@ export const THEMES = {
     "hippopotamus",
     "chameleon",
     "octopus",
+    "cheetah",
+    "flamingo",
+    "hedgehog",
+    "narwhal",
   ],
   Countries: [
     "brazil",
@@ -28,6 +32,8 @@ export const THEMES = {
     "france",
     "italy",
     "south africa",
+    "switzerland",
+    "new zealand",
   ],
   Fruits: [
     "banana",
@@ -42,6 +48,8 @@ export const THEMES = {
     "dragonfruit",
     "blackberry",
     "mango",
+    "tangerine",
+    "apricot",
   ],
   Colors: [
     "turquoise",
@@ -52,6 +60,8 @@ export const THEMES = {
     "magenta",
     "chartreuse",
     "indigo",
+    "maroon",
+    "teal",
   ],
   Sports: [
     "basketball",
@@ -62,6 +72,8 @@ export const THEMES = {
     "baseball",
     "skateboarding",
     "snowboarding",
+    "surfing",
+    "handball",
   ],
   Occupations: [
     "engineer",
@@ -72,6 +84,8 @@ export const THEMES = {
     "photographer",
     "scientist",
     "carpenter",
+    "architect",
+    "mechanic",
   ],
   BodyParts: [
     "shoulder",
@@ -82,6 +96,8 @@ export const THEMES = {
     "fingernail",
     "kneecap",
     "forehead",
+    "collarbone",
+    "thumb",
   ],
   Space: [
     "astronomy",
@@ -92,6 +108,8 @@ export const THEMES = {
     "cosmonaut",
     "constellation",
     "telescope",
+    "galaxy",
+    "nebula",
   ],
   Vehicles: [
     "motorcycle",
@@ -102,6 +120,8 @@ export const THEMES = {
     "bicycle",
     "convertible",
     "bulldozer",
+    "pickup truck",
+    "sailboat",
   ],
   Music: [
     "saxophone",
@@ -122,6 +142,8 @@ export const THEMES = {
     "container",
     "typescript",
     "javascript",
+    "kubernetes",
+    "serverless",
   ],
   Cities: [
     "lisbon",
@@ -132,6 +154,32 @@ export const THEMES = {
     "buenos aires",
     "tokyo",
     "amsterdam",
+    "paris",
+    "new york",
+  ],
+  Movies: [
+    "inception",
+    "gladiator",
+    "interstellar",
+    "parasite",
+    "whiplash",
+    "avatar",
+  ],
+  Nature: [
+    "waterfall",
+    "volcano",
+    "rainforest",
+    "hurricane",
+    "avalanche",
+    "earthquake",
+  ],
+  Foods: [
+    "lasagna",
+    "hamburger",
+    "sushi",
+    "tacos",
+    "croissant",
+    "risotto",
   ],
 } as const;
 
@@ -150,6 +198,10 @@ export const THEMES_PT = {
     "hipopótamo",
     "camaleão",
     "polvo",
+    "guepardo",
+    "flamingo",
+    "ouriço",
+    "narval",
   ],
   Países: [
     "brasil",
@@ -165,6 +217,8 @@ export const THEMES_PT = {
     "frança",
     "itália",
     "áfrica do sul",
+    "suíça",
+    "nova zelândia",
   ],
   Frutas: [
     "banana",
@@ -179,6 +233,8 @@ export const THEMES_PT = {
     "pitaya",
     "amora",
     "manga",
+    "tangerina",
+    "damasco",
   ],
   Cores: [
     "turquesa",
@@ -189,6 +245,8 @@ export const THEMES_PT = {
     "magenta",
     "chartreuse",
     "anil",
+    "bordô",
+    "verde-azulado",
   ],
   Esportes: [
     "basquete",
@@ -199,6 +257,8 @@ export const THEMES_PT = {
     "beisebol",
     "skate",
     "snowboard",
+    "surfe",
+    "handebol",
   ],
   Profissões: [
     "engenheiro",
@@ -209,6 +269,8 @@ export const THEMES_PT = {
     "fotógrafo",
     "cientista",
     "carpinteiro",
+    "arquiteto",
+    "mecânico",
   ],
   "Partes do corpo": [
     "ombro",
@@ -219,6 +281,8 @@ export const THEMES_PT = {
     "unha",
     "rótula",
     "testa",
+    "clavícula",
+    "polegar",
   ],
   Espaço: [
     "astronomia",
@@ -229,6 +293,8 @@ export const THEMES_PT = {
     "cosmonauta",
     "constelação",
     "telescópio",
+    "galáxia",
+    "nébula",
   ],
   Veículos: [
     "motocicleta",
@@ -239,6 +305,8 @@ export const THEMES_PT = {
     "bicicleta",
     "conversível",
     "trator",
+    "caminhonete",
+    "veleiro",
   ],
   Música: [
     "saxofone",
@@ -259,6 +327,8 @@ export const THEMES_PT = {
     "container",
     "typescript",
     "javascript",
+    "kubernetes",
+    "serverless",
   ],
   Cidades: [
     "lisboa",
@@ -269,6 +339,32 @@ export const THEMES_PT = {
     "buenos aires",
     "tóquio",
     "amsterdã",
+    "paris",
+    "nova york",
+  ],
+  Filmes: [
+    "a origem",
+    "gladiador",
+    "interestelar",
+    "parasita",
+    "whiplash",
+    "avatar",
+  ],
+  Natureza: [
+    "cachoeira",
+    "vulcão",
+    "floresta tropical",
+    "furacão",
+    "avalanche",
+    "terremoto",
+  ],
+  Comidas: [
+    "lasanha",
+    "hambúrguer",
+    "sushi",
+    "taco",
+    "croissant",
+    "risoto",
   ],
 } as const;
 

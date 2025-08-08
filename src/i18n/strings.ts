@@ -12,6 +12,9 @@ export const STRINGS: Record<Locale, Record<string, string>> = {
     youLost: "You lost. Word:",
     tip: "Tip: Use your physical keyboard too.",
     language: "Language",
+    winsLabel: "Wins",
+    lossesLabel: "Losses",
+    autoNewGameIn: "New game in",
   },
   pt: {
     title: "Forca",
@@ -24,6 +27,9 @@ export const STRINGS: Record<Locale, Record<string, string>> = {
     youLost: "Você perdeu. Palavra:",
     tip: "Dica: Você também pode usar o teclado físico.",
     language: "Idioma",
+    winsLabel: "Vitórias",
+    lossesLabel: "Derrotas",
+    autoNewGameIn: "Novo jogo em",
   },
 };
 
